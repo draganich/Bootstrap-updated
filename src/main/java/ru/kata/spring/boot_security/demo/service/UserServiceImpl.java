@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void update(User user) {
         user.setRoles(roleRepository.saveAll(user.getRoles()));
-        if (!user.getPassword().startsWith("$2a$10$")) {
+        if (!user.getPassword().startsWith("$2")) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
         userRepository.saveAndFlush(user);
